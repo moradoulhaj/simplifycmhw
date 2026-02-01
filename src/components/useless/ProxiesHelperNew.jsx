@@ -87,7 +87,7 @@ export default function ProxiesHelperNew() {
       });
     });
 
-    const entityName = sessionKeys[0]?.split("_")[0] || "File";
+    const entityName = sessionKeys[0]?.split("_").filter(e=>e.startsWith("CMH"))[0]|| "File";
     const fileName = `${entityName}_${Math.random().toString(36).substring(2, 8)}`;
     
     const blob = new Blob([content.trim()], { type: "text/plain" });
