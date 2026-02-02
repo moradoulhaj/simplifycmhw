@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { motion, AnimatePresence } from "framer-motion";
 import "react-toastify/dist/ReactToastify.css";
+import { Sparkles, Wand } from "lucide-react";
 
 // --- Pure Helper Logic ---
 const RESERVED_PREFIXES = [
@@ -54,6 +55,12 @@ export default function ProxiesHelperNew() {
     } else {
       setManualInput(value);
     }
+  };
+
+  const handleSparkClick = () => {
+    const lines = manualInput.split("\n");
+    const extracted = lines.slice(0,data.totalProfiles)
+    setManualInput(extracted.join("\n"))   
   };
 
   const handleFileChange = (e) => {
@@ -168,8 +175,11 @@ export default function ProxiesHelperNew() {
                         className="w-full h-48 p-6 font-mono text-sm bg-slate-50 border-2 border-slate-100 rounded-3xl focus:border-indigo-500 outline-none transition-all resize-none"
                         placeholder={`Paste ${data.totalProfiles} proxies here...`}
                       />
-                      <div className={`absolute bottom-4 right-4 px-3 py-1 rounded-lg text-xs font-black ${enteredProxiesCount === data.totalProfiles ? 'bg-green-500 text-white' : 'bg-slate-200'}`}>
-                        {enteredProxiesCount} / {data.totalProfiles}
+                      <div onClick={handleSparkClick} className={`flex text-center items-center gap-1 absolute bottom-4 right-4 px-3 py-1 hover:cursor-pointer hover:bg-teal-400 rounded-lg text-xs font-black ${enteredProxiesCount === data.totalProfiles ? 'bg-green-500 text-white' : 'bg-slate-200'}`}>
+                        { enteredProxiesCount }/{data.totalProfiles }  
+                        {enteredProxiesCount >data.totalProfiles &&<Sparkles className="border-l pl-1 border-l-black text-4xl text-7xl"></Sparkles> }
+                       
+
                       </div>
                     </div>
 
