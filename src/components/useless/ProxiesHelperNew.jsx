@@ -59,9 +59,19 @@ export default function ProxiesHelperNew() {
 
   const handleSparkClick = () => {
     const lines = manualInput.split("\n");
-    const extracted = lines.slice(0,data.totalProfiles)
-    setManualInput(extracted.join("\n"))   
+  
+    // Shuffle the array using Fisher–Yates algorithm
+    for (let i = lines.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [lines[i], lines[j]] = [lines[j], lines[i]];
+    }
+  
+    // Take only the first N lines
+    const extracted = lines.slice(0, data.totalProfiles);
+  
+    setManualInput(extracted.join("\n"));
   };
+  
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -177,7 +187,7 @@ export default function ProxiesHelperNew() {
                       />
                       <div onClick={handleSparkClick} className={`flex text-center items-center gap-1 absolute bottom-4 right-4 px-3 py-1 hover:cursor-pointer hover:bg-teal-400 rounded-lg text-xs font-black ${enteredProxiesCount === data.totalProfiles ? 'bg-green-500 text-white' : 'bg-slate-200'}`}>
                         { enteredProxiesCount }/{data.totalProfiles }  
-                        {enteredProxiesCount >data.totalProfiles &&<Sparkles className="border-l pl-1 border-l-black text-4xl text-7xl"></Sparkles> }
+                        {enteredProxiesCount >data.totalProfiles &&<Sparkles className="hover:text-center border-l pl-1 border-l-black text-4xl text-7xl"></Sparkles> }
                        
 
                       </div>
