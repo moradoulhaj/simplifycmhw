@@ -36,6 +36,7 @@ import Users from "./components/DashboardComponents/Users";
 import ProxiesListing from "./components/ProxiesListing";
 import CsvGenerator from "./components/ProxieDuplication";
 import ProxieDuplication from "./components/ProxieDuplication";
+import EmptyProfiles from "./components/useless/EmptyProfiles";
 
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -101,6 +102,8 @@ export default function App() {
                 <Route path="/offerRanges" element={<OfferRanges />} />
                 <Route path="/proxiesHelper" element={<ProxiesHelper />} />
                 <Route path="/proxiesListing" element={<ProxiesListing />} />
+                <Route path="/emptyProfiles" element={<EmptyProfiles />} />
+
 
 
 

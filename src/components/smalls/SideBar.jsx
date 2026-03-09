@@ -123,6 +123,11 @@ export default function Sidebar({ isOpen, toggle }) {
       label: "CMH5 Duplicate Proxies",
       category: "tool",
       status: "active",
+    }, {
+      path: "/emptyProfiles",
+      label: "Empty Profiles",
+      category: "tool",
+      status: "active",
     },
 
     // Desktop links
